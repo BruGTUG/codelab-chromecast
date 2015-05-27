@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory
+        android:title="@string/captions_settings">
+        <PreferenceScreen
+            android:key="caption"
+            android:title="@string/captions">
+            <intent android:action="android.intent.action.VIEW"
+                android:targetClass="com.google.sample.castcompanionlibrary.cast.tracks.CaptionsPreferenceActivity"
+                android:targetPackage="com.google.sample.cast.refplayer"/>
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/about_app" >
+        <EditTextPreference
+            android:enabled="false"
+            android:key="app_version"
+            android:persistent="false"
+            android:selectable="false"
+            android:shouldDisableView="false"
+            android:title="@string/version" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,29 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.0.2"
+
+    defaultConfig {
+        applicationId "com.google.sample.cast.refplayer"
+        minSdkVersion 11
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile files('libs/android-query.0.25.10.jar')
+    // to get around https://code.google.com/p/android/issues/detail?id=52962, we need to
+    // depend on both debug and release versions of the library
+    releaseCompile project(path: ':CCL', configuration: 'release')
+    debugCompile project(path: ':CCL', configuration: 'debug')
+    compile 'com.github.amlcurran.showcaseview:library:5.0.0'
+}
