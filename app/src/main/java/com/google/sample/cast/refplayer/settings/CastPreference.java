@@ -16,11 +16,6 @@
 
 package com.google.sample.cast.refplayer.settings;
 
-import com.google.sample.cast.refplayer.CastApplication;
-import com.google.sample.cast.refplayer.R;
-import com.google.sample.cast.refplayer.utils.Utils;
-import com.google.sample.castcompanionlibrary.cast.VideoCastManager;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -29,6 +24,11 @@ import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+
+import com.google.android.libraries.cast.companionlibrary.cast.VideoCastManager;
+import com.google.sample.cast.refplayer.CastApplication;
+import com.google.sample.cast.refplayer.R;
+import com.google.sample.cast.refplayer.utils.Utils;
 
 public class CastPreference extends PreferenceActivity
         implements OnSharedPreferenceChangeListener {

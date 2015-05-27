@@ -16,11 +16,6 @@
 
 package com.google.sample.cast.refplayer.utils;
 
-import com.google.sample.cast.refplayer.R;
-import com.google.sample.castcompanionlibrary.cast.exceptions.CastException;
-import com.google.sample.castcompanionlibrary.cast.exceptions.NoConnectionException;
-import com.google.sample.castcompanionlibrary.cast.exceptions.TransientNetworkDisconnectionException;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -29,6 +24,11 @@ import android.graphics.Point;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import com.google.android.libraries.cast.companionlibrary.cast.exceptions.CastException;
+import com.google.android.libraries.cast.companionlibrary.cast.exceptions.NoConnectionException;
+import com.google.android.libraries.cast.companionlibrary.cast.exceptions.TransientNetworkDisconnectionException;
+import com.google.sample.cast.refplayer.R;
 
 import java.io.IOException;
 

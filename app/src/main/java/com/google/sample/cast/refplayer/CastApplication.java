@@ -16,17 +16,18 @@
 
 package com.google.sample.cast.refplayer;
 
-import com.google.sample.cast.refplayer.settings.CastPreference;
-import com.google.sample.castcompanionlibrary.cast.VideoCastManager;
-import com.google.sample.castcompanionlibrary.utils.Utils;
-
 import android.app.Application;
 import android.content.Context;
+import android.preference.PreferenceManager;
+
+import com.google.android.libraries.cast.companionlibrary.cast.VideoCastManager;
+import com.google.sample.cast.refplayer.settings.CastPreference;
 
 /**
  * The {@link Application} for this demo application.
  */
 public class CastApplication extends Application {
+    private static final String PREFS_KEY_VOLUME_INCREMENT = "PREFS_KEY_VOLUMNE_INCREMENT";
     private static String APPLICATION_ID;
     private static VideoCastManager mCastMgr = null;
     public static final double VOLUME_INCREMENT = 0.05;
@@ -39,8 +40,10 @@ public class CastApplication extends Application {
     public void onCreate() {
         super.onCreate();
         APPLICATION_ID = getString(R.string.app_id);
-        Utils.saveFloatToPreference(getApplicationContext(),
-                VideoCastManager.PREFS_KEY_VOLUME_INCREMENT, (float) VOLUME_INCREMENT);
+        PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+                .edit()
+                .putFloat(PREFS_KEY_VOLUME_INCREMENT, (float) VOLUME_INCREMENT)
+        .apply();
 
     }
 
@@ -55,9 +58,8 @@ public class CastApplication extends Application {
                             VideoCastManager.FEATURE_DEBUGGING);
 
         }
-        mCastMgr.setContext(context);
-        String destroyOnExitStr = Utils.getStringFromPreference(context,
-                CastPreference.TERMINATION_POLICY_KEY);
+        String destroyOnExitStr = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(CastPreference.TERMINATION_POLICY_KEY, null);
         mCastMgr.setStopOnDisconnect(null != destroyOnExitStr
                 && CastPreference.STOP_ON_DISCONNECT.equals(destroyOnExitStr));
         return mCastMgr;
